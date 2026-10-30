@@ -1,7 +1,7 @@
 # r-servation-des-tickets
 Groupe G11 : SAKO Abdul Alim Dawoud , YELKUNI T. Franck Onel , TOUGMA Trevor
 
-Dépôt GitHub :
+Dépôt GitHub :https://github.com/Alim-vsc/r-servation-des-tickets.git
 Tag : jalon-1
 
 Synthèse du jalon 1 : modèle et invariants
