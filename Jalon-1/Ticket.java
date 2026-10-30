@@ -7,7 +7,7 @@ public  class Ticket {
 
     protected Ticket(int numero, String titre, Utilisateur createur) {
         if (numero <= 0)
-            throw new IllegalArgumentException("Le numero doit etre positif");
+            throw new IllegalArgumentException("Le numero doit etre positif et non nul");
         if (titre == null )
             throw new IllegalArgumentException("Le titre est obligatoire");
         if (createur == null)
@@ -59,12 +59,7 @@ public  class Ticket {
         return etat;
     }public String toString() {
         return "Ticket{" +
-                "numero=" + numero +
-                ", titre='" + titre + '\'' +
-                ", createur=" + createur +
-                ", priorite=" + priorite +
-                ", etat='" + etat + '\'' +
-                '}';
+                "numero=" + numero +", titre='" + titre +", createur=" + createur +", priorite=" + priorite +", etat='" + etat +'}';
     }
         
     

@@ -6,16 +6,16 @@ public class Utilisateur {
 
     public Utilisateur(int id, String nom, String prenom, String email) {
         if (nom == null ) {
-            throw new IllegalArgumentException("Le nom ne peut pas être vide.");
+            throw new IllegalArgumentException("Le nom ne peut pas etre vide.");
         }
         if (prenom == null ) {
-            throw new IllegalArgumentException("Le prénom ne peut pas être vide.");
+            throw new IllegalArgumentException("Le prenom ne peut pas etre vide.");
         }
         if (email == null ) {
-            throw new IllegalArgumentException("L'email ne peut pas être vide.");
+            throw new IllegalArgumentException("L'email ne peut pas etre vide.");
         }
         if(id<=0){
-            throw new IllegalArgumentException("L'id ne peut pas être négatif.");
+            throw new IllegalArgumentException("L'id ne peut pas etre negatif ou nul.");
         }
         this.id = id; 
         this.nom = nom;
@@ -37,10 +37,6 @@ public class Utilisateur {
         return email;
     }
     public String toString() {
-        return "Utilisateur{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Utilisateur{" +"nom='" + nom +", prenom='" + prenom + ", email='" + email  +'}';
     }
 }
