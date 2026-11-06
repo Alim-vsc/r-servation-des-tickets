@@ -17,5 +17,6 @@ public class Main {
 
         Ticket t = new DemandeService(3, "badge", john);
         System.out.println("Délai cible : " + t.delaiCible() + " h");
+        System.out.println(john.getEmail());
     }
 }
