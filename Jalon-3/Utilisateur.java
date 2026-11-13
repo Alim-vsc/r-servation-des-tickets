@@ -1,45 +1,71 @@
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-public class DepotUtilisateurs implements Depot<Utilisateur> {
-    private final Set<Utilisateur> utilisateurs = new HashSet<>();
-    @Override
-    public boolean ajouter(Utilisateur utilisateur) {
-        if (utilisateur == null) {
-            throw new IllegalArgumentException("L'utilisateur est obligatoire");
+
+public class Utilisateur implements Notifiable {
+    private final int id;
+    private final String nom;
+    private final String prenom;
+    private final String email;
+    private final List<String> notifications;
+    public Utilisateur(int id, String nom, String prenom, String email) {
+        if (nom == null) {
+            throw new IllegalArgumentException("Le nom ne peut pas etre vide.");
         }
-        return utilisateurs.add(utilisateur);
-    }
-    @Override
-    public Utilisateur trouver(int id) {
-        for (Utilisateur u : utilisateurs) {
-            if (u.getId() == id) {
-                return u;
-            }
+        if (prenom == null) {
+            throw new IllegalArgumentException("Le prenom ne peut pas etre vide.");
         }
-        return null;
-    }
-    @Override
-    public boolean supprimer(int id) {
-        Iterator<Utilisateur> it = utilisateurs.iterator();
-        while (it.hasNext()) {
-            if (it.next().getId() == id) {
-                it.remove();
-                return true;
-            }
+        if (email == null) {
+            throw new IllegalArgumentException("L'email ne peut pas etre vide.");
         }
-        return false;
+        if (id <= 0) {
+            throw new IllegalArgumentException("L'id ne peut pas etre negatif ou nul.");
+        }
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.notifications = new ArrayList<>();
+    }
+    public String getNom() {
+        return nom;
+    }
+    public String getPrenom() {
+        return prenom;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getEmail() {
+        return email;
     }
     @Override
-    public List<Utilisateur> lister() {
-        List<Utilisateur> resultat = new ArrayList<>(utilisateurs);
-        resultat.sort((a, b) -> Integer.compare(a.getId(), b.getId()));
-        return resultat;
+    public void notifier(String message) {
+        if (message == null) {
+            throw new IllegalArgumentException("Le message est obligatoire");
+        }
+        notifications.add(message);
     }
     @Override
-    public int taille() {
-        return utilisateurs.size();
+    public List<String> getNotifications() {
+        return Collections.unmodifiableList(notifications);
+    }
+    @Override
+    public boolean equals(Object autre) {
+        if (this == autre) {
+            return true;
+        }
+        if (!(autre instanceof Utilisateur)) {
+            return false;
+        }
+        return id == ((Utilisateur) autre).id;
+    }
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "nom='" + nom + '\'' + ", prenom='" + prenom + '\'' + ", email='" + email + '\'' + '}';
     }
 }

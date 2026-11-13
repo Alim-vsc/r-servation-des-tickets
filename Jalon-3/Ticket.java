@@ -18,7 +18,7 @@ public abstract class Ticket implements Comparable<Ticket>, Archivable {
         this.etat = "Nouveau";
     }
     public boolean prendreEnCharge(Utilisateur agent) {
-        if (etat.equals("Nouveau")  priorite == Priorite.CRITIQUE  priorite == Priorite.HAUTE) {
+        if (etat.equals("Nouveau") || priorite == Priorite.CRITIQUE || priorite == Priorite.HAUTE) {
             etat = "En cours";
             createur.notifier("Ticket " + numero + " pris en charge");
             return true;
