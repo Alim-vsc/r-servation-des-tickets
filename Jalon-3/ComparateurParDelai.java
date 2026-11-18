@@ -1,5 +1,4 @@
 import java.util.Comparator;
-
 public class ComparateurParDelai implements Comparator<Ticket> {
     @Override
     public int compare(Ticket a, Ticket b) {

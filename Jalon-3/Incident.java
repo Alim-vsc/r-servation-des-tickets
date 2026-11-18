@@ -3,7 +3,6 @@ public class Incident extends Ticket {
     public Incident(int numero, String titre, Utilisateur createur) {
         super(numero, titre, createur);
     }
-
     @Override
     public int delaiCible() {
         switch (getPriorite()) {

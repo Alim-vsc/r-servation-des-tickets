@@ -9,13 +9,13 @@ public class Utilisateur implements Notifiable {
     private final String email;
     private final List<String> notifications;
     public Utilisateur(int id, String nom, String prenom, String email) {
-        if (nom == null) {
+        if (nom == null || nom.isBlank()) {
             throw new IllegalArgumentException("Le nom ne peut pas etre vide.");
         }
-        if (prenom == null) {
+        if (prenom == null || prenom.isBlank()) {
             throw new IllegalArgumentException("Le prenom ne peut pas etre vide.");
         }
-        if (email == null) {
+        if (email == null || email.isBlank()) {
             throw new IllegalArgumentException("L'email ne peut pas etre vide.");
         }
         if (id <= 0) {
@@ -41,7 +41,7 @@ public class Utilisateur implements Notifiable {
     }
     @Override
     public void notifier(String message) {
-        if (message == null) {
+        if (message == null || message.isBlank()) {
             throw new IllegalArgumentException("Le message est obligatoire");
         }
         notifications.add(message);
